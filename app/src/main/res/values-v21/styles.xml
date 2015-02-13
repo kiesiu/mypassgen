@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2015 Łukasz Kieś <kiesiu@kiesiu.com>.
   ~
@@ -14,5 +15,5 @@
   -->
 
 <resources>
-    <style name="AppTheme" parent="android:Theme.Light"></style>
+    <style name="AppTheme" parent="android:Theme.Material.Light"></style>
 </resources>
