@@ -1,5 +1,5 @@
 /.gradle
-/gradle*
+gradlew.bat
 /.navigation
 /local.properties
 /.idea
