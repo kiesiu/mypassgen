@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.kiesiu.mypassgenwidget;
+package com.kiesiu.mypassgen;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
