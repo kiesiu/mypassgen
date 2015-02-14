@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2015 Łukasz Kieś <kiesiu@kiesiu.com>.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,9 +13,17 @@
   ~ limitations under the License.
   -->
 
-<resources>
-    <string name="app_name">MyPassGen</string>
-    <string name="add_widget">Add widget</string>
-    <string name="action_about">About</string>
-    <string name="action_rate">Rate the application</string>
-</resources>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="1"
+        android:showAsAction="never"
+        android:title="@string/action_about"></item>
+    <item
+        android:id="@+id/action_rate"
+        android:orderInCategory="2"
+        android:showAsAction="never"
+        android:title="@string/action_rate"></item>
+</menu>
