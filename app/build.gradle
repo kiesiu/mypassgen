@@ -4,11 +4,11 @@ android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
     defaultConfig {
-        applicationId "com.kiesiu.mypassgenwidget"
-        minSdkVersion 10
+        applicationId 'com.kiesiu.mypassgen'
+        minSdkVersion 8
         targetSdkVersion 21
-        versionCode 1
-        versionName '0.1'
+        versionCode 190
+        versionName '1.9'
     }
     buildTypes {
         release {
