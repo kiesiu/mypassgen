@@ -63,7 +63,7 @@
             android:layout_height="28dp"
             android:id="@+id/tvSize"
             android:singleLine="false"
-            android:layout_gravity="center" />
+            android:gravity="center" />
     </LinearLayout>
 
     <TextView
@@ -71,11 +71,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvPassword"
         android:layout_marginTop="@dimen/margin_large"
-        android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="22sp"
         android:typeface="monospace"
-        android:textAlignment="center" />
+        android:gravity="center" />
 
     <Button
         android:layout_width="wrap_content"
