@@ -19,15 +19,84 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import java.security.NoSuchAlgorithmException;
+
+import static com.kiesiu.mypassgen.MyPassGen.makePassword;
+import static com.kiesiu.mypassgen.MyPassGen.randomPassword;
 
 
 public class MainActivity extends Activity {
+    private TextView tvPassword;
+    private TextView tvSize;
+    private String strPassword = "";
+    private final TextWatcher ePhraseListener = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            if (editable.length() == 0) {
+                strPassword = "";
+            } else {
+                try {
+                    strPassword = makePassword(editable.toString());
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+            }
+            updatePasswordText();
+        }
+    };
+    private final View.OnClickListener eRandomListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            strPassword = randomPassword();
+            updatePasswordText();
+        }
+    };
+    private int intPassword = 12;
+    private final SeekBar.OnSeekBarChangeListener eSizeListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            intPassword = i + 6;
+            tvSize.setText(String.valueOf(intPassword));
+            updatePasswordText();
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tvPassword = (TextView) findViewById(R.id.tvPassword);
+        tvSize = (TextView) findViewById(R.id.tvSize);
+        SeekBar sbSize = (SeekBar) findViewById(R.id.sbSize);
+        sbSize.setOnSeekBarChangeListener(eSizeListener);
+        sbSize.setProgress(intPassword - 6);
+        ((EditText) findViewById(R.id.etPhrase)).addTextChangedListener(ePhraseListener);
+        findViewById(R.id.btnRandom).setOnClickListener(eRandomListener);
     }
 
     @Override
@@ -44,5 +113,13 @@ public class MainActivity extends Activity {
                         Uri.parse("market://details?id=com.kiesiu.mypassgen")));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void updatePasswordText() {
+        if (intPassword < strPassword.length()) {
+            tvPassword.setText(strPassword.substring(0, intPassword));
+        } else if (strPassword.equals("")) {
+            tvPassword.setText("");
+        }
     }
 }
