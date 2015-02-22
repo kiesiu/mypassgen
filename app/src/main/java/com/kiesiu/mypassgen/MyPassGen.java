@@ -21,7 +21,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-public class MyPassGen {
+class MyPassGen {
     private static String a85Encode(String input) {
         /* Based on base85 implementation on https://github.com/noseglid/base85/
          * Copyright by Alexander Olsson <noseglid(at)gmail.com>

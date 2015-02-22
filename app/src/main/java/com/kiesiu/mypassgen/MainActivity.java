@@ -30,9 +30,6 @@ import android.widget.TextView;
 
 import java.security.NoSuchAlgorithmException;
 
-import static com.kiesiu.mypassgen.MyPassGen.makePassword;
-import static com.kiesiu.mypassgen.MyPassGen.randomPassword;
-
 
 public class MainActivity extends Activity {
     private TextView tvPassword;
@@ -53,7 +50,7 @@ public class MainActivity extends Activity {
                 strPassword = "";
             } else {
                 try {
-                    strPassword = makePassword(editable.toString());
+                    strPassword = MyPassGen.makePassword(editable.toString());
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
@@ -64,7 +61,7 @@ public class MainActivity extends Activity {
     private final View.OnClickListener eRandomListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            strPassword = randomPassword();
+            strPassword = MyPassGen.randomPassword();
             updatePasswordText();
         }
     };
