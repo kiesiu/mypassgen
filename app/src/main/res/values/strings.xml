@@ -15,11 +15,11 @@
 
 <resources>
     <string name="app_name">MyPassGen</string>
-    <string name="add_widget">Add widget</string>
     <string name="action_about">About</string>
     <string name="action_rate">Rate the application</string>
     <string name="your_static_phrase">Your secret static phrase</string>
     <string name="static_phrase">static phrase</string>
     <string name="password_size">Password size</string>
     <string name="random_password">Generate random password</string>
+    <string name="widget_click_password">click password to generate new</string>
 </resources>

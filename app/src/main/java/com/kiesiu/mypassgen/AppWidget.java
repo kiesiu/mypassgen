@@ -38,9 +38,10 @@ public class AppWidget extends AppWidgetProvider {
     public void onDisabled(Context context) {
     }
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.app_widget);
-        appWidgetManager.updateAppWidget(appWidgetId, views);
+    private static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                                        int appWidgetId) {
+        RemoteViews view = new RemoteViews(context.getPackageName(), R.layout.app_widget);
+        view.setTextViewText(R.id.widgetPassword, MyPassGen.randomPassword().substring(0, 12));
+        appWidgetManager.updateAppWidget(appWidgetId, view);
     }
 }
