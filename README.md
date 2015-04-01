@@ -1,10 +1,11 @@
 ### Fast, simple to use and secure password generator. For free!
 
-Available to [install from Google Play](https://play.google.com/store/apps/details?id=com.kiesiu.mypassgen).
+The latest stable version is available to [install from Google Play](https://play.google.com/store/apps/details?id=com.kiesiu.mypassgen).
 
 Fast, simple to use and secure password generator:
-* Create strong and complex passwords using your static passphrase.
+* Create strong and complex passwords using your secret static passphrase.
 * Choose the password length between 6 and 32 characters.
+* Generate a random password. Also from a widget!
 * No network connection required.
 * The application does not need any permissions on your device and does not store any data.
 
