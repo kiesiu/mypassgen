@@ -21,5 +21,4 @@
     <string name="static_phrase">static phrase</string>
     <string name="password_size">Password size</string>
     <string name="random_password">Generate random password</string>
-    <string name="widget_click_password">click password to generate new</string>
 </resources>

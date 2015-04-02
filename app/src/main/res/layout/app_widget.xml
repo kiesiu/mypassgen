@@ -14,46 +14,31 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="40dp"
+    android:layout_width="match_parent" android:layout_height="@dimen/widget_size"
     android:padding="@dimen/widget_margin"
     android:orientation="horizontal"
-    android:background="#f2f2f2">
+    android:background="#f2f2f2"
+    android:id="@+id/widgetBase">
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageLauncher"
+        android:layout_width="@dimen/widget_size"
+        android:layout_height="fill_parent"
+        android:id="@+id/imgLauncher"
         android:src="@mipmap/ic_launcher"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:clickable="true" />
+        android:layout_marginLeft="@dimen/margin_widget"
+        android:layout_marginRight="@dimen/margin_widget" />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
         android:layout_width="0dp"
         android:layout_height="fill_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/widgetPassword"
+        android:typeface="monospace"
+        android:textStyle="bold"
+        android:textColor="#000"
         android:layout_weight="1"
-        android:layout_marginLeft="@dimen/margin_small"
-        android:clickable="true">
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/widgetPassword"
-            android:typeface="monospace"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:layout_weight="1" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/widget_click_password"
-            android:id="@+id/widgetHint"
-            android:layout_weight="1"
-            android:textColor="#666"
-            android:textSize="12sp" />
-    </LinearLayout>
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_widget"
+        android:layout_marginRight="@dimen/margin_widget" />
 
 </LinearLayout>
