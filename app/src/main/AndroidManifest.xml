@@ -25,6 +25,7 @@
         <receiver android:name="com.kiesiu.mypassgen.AppWidget" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.kiesiu.mypassgen.REFRESH" />
             </intent-filter>
 
             <meta-data

@@ -15,13 +15,28 @@
 
 package com.kiesiu.mypassgen;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.RemoteViews;
 
 
 public class AppWidget extends AppWidgetProvider {
+
+    final private static String REFRESH = "com.kiesiu.mypassgen.REFRESH";
+
+    private static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                                        int appWidgetId) {
+        RemoteViews view = new RemoteViews(context.getPackageName(), R.layout.app_widget);
+        view.setTextViewText(R.id.widgetPassword, MyPassGen.randomPassword().substring(0, 12));
+        Intent refresh = new Intent(context, AppWidget.class);
+        refresh.setAction(REFRESH).putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+        view.setOnClickPendingIntent(R.id.widgetBase, PendingIntent.getBroadcast(context, 0,
+                refresh, PendingIntent.FLAG_UPDATE_CURRENT));
+        appWidgetManager.updateAppWidget(appWidgetId, view);
+    }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -38,10 +53,14 @@ public class AppWidget extends AppWidgetProvider {
     public void onDisabled(Context context) {
     }
 
-    private static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                        int appWidgetId) {
-        RemoteViews view = new RemoteViews(context.getPackageName(), R.layout.app_widget);
-        view.setTextViewText(R.id.widgetPassword, MyPassGen.randomPassword().substring(0, 12));
-        appWidgetManager.updateAppWidget(appWidgetId, view);
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+        if (intent.getAction().equals(REFRESH)) {
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            updateAppWidget(context, appWidgetManager,
+                    intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
+                            AppWidgetManager.INVALID_APPWIDGET_ID));
+        }
     }
 }
