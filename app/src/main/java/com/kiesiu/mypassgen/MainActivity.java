@@ -108,6 +108,10 @@ public class MainActivity extends Activity {
             case R.id.action_rate:
                 startActivity(new Intent(Intent.ACTION_VIEW,
                         Uri.parse("market://details?id=com.kiesiu.mypassgen")));
+                break;
+            case R.id.action_about:
+                startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

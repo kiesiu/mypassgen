@@ -22,4 +22,5 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_large">32dp</dimen>
     <dimen name="widget_size">40dp</dimen>
+    <dimen name="text_micro">12sp</dimen>
 </resources>

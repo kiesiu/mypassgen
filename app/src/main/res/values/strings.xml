@@ -21,4 +21,13 @@
     <string name="static_phrase">static phrase</string>
     <string name="password_size">Password size</string>
     <string name="random_password">Generate random password</string>
+    <string name="about_about">
+Fast, simple to use and secure password generator:\n
+* Create strong and complex passwords using your secret static passphrase.\n
+* Choose the password length between 6 and 32 characters.\n
+* Generate a random password. Also from a widget!\n
+* No network connection required.\n
+* The application does not need any permissions on your device and does not store any data.
+    </string>
+    <string name="about_credits">Copyright © 2014-2015 Łukasz Kieś</string>
 </resources>

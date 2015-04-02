@@ -16,4 +16,5 @@
 
 <resources>
     <style name="AppTheme" parent="android:Theme.Material.Light"></style>
+    <style name="DialogTheme" parent="android:Theme.Material.Light.Dialog.NoActionBar"></style>
 </resources>
