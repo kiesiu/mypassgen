@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
     private TextView tvPassword;
     private TextView tvSize;
     private String strPassword = "";
+    private int intPassword = 12;
     private final TextWatcher ePhraseListener = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -46,14 +47,14 @@ public class MainActivity extends Activity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            if (editable.length() == 0) {
-                strPassword = "";
-            } else {
+            if (editable.length() != 0) {
                 try {
                     strPassword = MyPassGen.makePassword(editable.toString());
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
+            } else {
+                strPassword = "";
             }
             updatePasswordText();
         }
@@ -61,11 +62,14 @@ public class MainActivity extends Activity {
     private final View.OnClickListener eRandomListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            strPassword = MyPassGen.randomPassword();
+            try {
+                strPassword = MyPassGen.randomPassword();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
             updatePasswordText();
         }
     };
-    private int intPassword = 12;
     private final SeekBar.OnSeekBarChangeListener eSizeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {

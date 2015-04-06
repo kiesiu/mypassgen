@@ -29,40 +29,42 @@ class MyPassGen {
         byte[] buf = input.getBytes();
         int padding = (buf.length % 4 == 0) ? 0 : 4 - buf.length % 4;
         String result = "";
-        for (int i = 0; i < buf.length; i += 4) {
+        int i = 0;
+        do {
             int num = ((buf[i] << 24) >>> 0) +
                     (((i + 1 > buf.length - 1 ? 0 : buf[i + 1]) << 16) >>> 0) +
                     (((i + 2 > buf.length - 1 ? 0 : buf[i + 2]) << 8) >>> 0) +
                     (((i + 3 > buf.length - 1 ? 0 : buf[i + 3]) << 0) >>> 0);
             StringBuilder block = new StringBuilder(1);
-            for (int j = 0; j < 5; ++j) {
+            int j = 0;
+            do {
                 block.insert(0, Character.toChars(33 + (num % 85))[0]);
-                num = (int)Math.round(Math.floor(num / 85));
-            }
+                num = (int) Math.round(Math.floor(num / 85));
+                ++j;
+            } while (j < 5);
             result += block.toString();
-        }
+            i += 4;
+        } while (i < buf.length);
         return result.substring(0, result.length() - padding);
     }
 
     public static String makePassword(String input) throws NoSuchAlgorithmException {
-        if (input.length() == 0) {
+        if (input.length() != 0) {
+            MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+            return a85Encode(Base64.encodeToString(mDigest.digest(input.getBytes()), Base64.DEFAULT));
+        } else {
             return "";
         }
-        MessageDigest mDigest = MessageDigest.getInstance("SHA1");
-        return a85Encode(Base64.encodeToString(mDigest.digest(input.getBytes()), Base64.DEFAULT));
     }
 
-    public static String randomPassword() {
+    public static String randomPassword() throws NoSuchAlgorithmException {
         SecureRandom rnd = new SecureRandom();
         StringBuilder str = new StringBuilder(1);
-        for (int i = 0; i < 16; i++) {
+        int i = 0;
+        do {
             str.insert(0, Character.toChars(32 + (rnd.nextInt(94)))[0]);
-        }
-        try {
-            return makePassword(str.toString());
-        } catch(NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
+            i++;
+        } while (i < 16);
+        return makePassword(str.toString());
     }
 }

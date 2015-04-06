@@ -22,15 +22,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
+import java.security.NoSuchAlgorithmException;
+
 
 public class AppWidget extends AppWidgetProvider {
-
     final private static String REFRESH = "com.kiesiu.mypassgen.REFRESH";
 
     private static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                         int appWidgetId) {
         RemoteViews view = new RemoteViews(context.getPackageName(), R.layout.app_widget);
-        view.setTextViewText(R.id.widgetPassword, MyPassGen.randomPassword().substring(0, 12));
+        try {
+            view.setTextViewText(R.id.widgetPassword, MyPassGen.randomPassword().substring(0, 12));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         Intent refresh = new Intent(context, AppWidget.class);
         refresh.setAction(REFRESH).putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         view.setOnClickPendingIntent(R.id.widgetBase, PendingIntent.getBroadcast(context, 0,
