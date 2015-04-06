@@ -14,7 +14,7 @@
   -->
 
 <resources>
-    <string name="app_name">MyPassGen</string>
+    <string name="app_name" translatable="false">MyPassGen</string>
     <string name="action_about">About</string>
     <string name="action_rate">Rate the application</string>
     <string name="your_static_phrase">Your secret static phrase</string>
@@ -29,5 +29,5 @@ Fast, simple to use and secure password generator:\n
 * No network connection required.\n
 * The application does not need any permissions on your device and does not store any data.
     </string>
-    <string name="about_credits">Copyright © 2014-2015 Łukasz Kieś</string>
+    <string name="about_credits" translatable="false">Copyright © 2014-2015 Łukasz Kieś</string>
 </resources>
