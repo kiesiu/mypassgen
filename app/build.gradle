@@ -6,9 +6,9 @@ android {
     defaultConfig {
         applicationId 'com.kiesiu.mypassgen'
         minSdkVersion 8
-        targetSdkVersion 21
-        versionCode 190
-        versionName '1.9'
+        targetSdkVersion 22
+        versionCode 200
+        versionName '2.0'
     }
     buildTypes {
         release {
